@@ -10,7 +10,7 @@ libraryDependencies += "com.sun.xml.bind" % "jaxb-xjc" % "2.2.4-1"
 
  libraryDependencies ++= {
   Seq("drools-compiler", "drools-core","drools-jsr94", "drools-decisiontables", "knowledge-api")
-    .map("org.drools" % _ % "5.2.0.Final")
+    .map("org.drools" % _ % "5.5.0.Final")
  }
 
 

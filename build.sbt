@@ -16,6 +16,6 @@ libraryDependencies ++= {
       .map("org.drools" % _ % droolsVersion)
 }
 
-val classesJarLocation = "/usr/lib/jvm/java-7-oracle/lib/tools.jar"
-
-fullClasspath in Runtime += Attributed.blank(file(classesJarLocation))
+//val classesJarLocation = "/usr/lib/jvm/java-7-oracle/lib/tools.jar"
+//
+//fullClasspath in Runtime += Attributed.blank(file(classesJarLocation))

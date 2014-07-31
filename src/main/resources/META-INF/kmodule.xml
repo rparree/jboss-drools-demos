@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kmodule
+        xmlns="http://jboss.org/kie/6.0.0/kmodule">
+    <kbase name="simple" packages="simple">
+        <ksession name="SimpleSession" type="stateless"/>
+    </kbase>
+    <kbase name="dsl" packages="dsl">
+        <ksession name="DSLSession"/>
+    </kbase>
+    <kbase name="fire" packages="fire">
+        <ksession name="BuildingSession"/>
+    </kbase>
+</kmodule>

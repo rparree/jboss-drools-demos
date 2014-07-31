@@ -4,7 +4,7 @@ import simple.model.Applicant;
 
 rule "Is of valid age"
 when
-    $a : Applicant( age < 18 )
+    $a : Applicant( age > 18 )
 then
-    $a.setPass( false );
+    $a.setPass( true );
 end

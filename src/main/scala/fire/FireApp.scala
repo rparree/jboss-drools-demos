@@ -1,27 +1,16 @@
 package fire
 
-import org.drools.builder.{ResourceType, KnowledgeBuilderFactory}
-import org.drools.io.ResourceFactory
-import org.drools.{FactHandle, KnowledgeBaseFactory}
+import simple.util.StatefulKieSessionSupport
 
 /**
  * todo  
  */
-object FireApp extends App {
-  val kbuilder = KnowledgeBuilderFactory.newKnowledgeBuilder
-  kbuilder.add(ResourceFactory.newClassPathResource("fire/Fire.drl"), ResourceType.DRL)
+object FireApp extends App with StatefulKieSessionSupport{
 
-
-  if (kbuilder.hasErrors) {
-    System.err.println(kbuilder.getErrors.toString)
-  }
-
-  //Initialise new session
-  val kbase = KnowledgeBaseFactory.newKnowledgeBase
-  kbase.addKnowledgePackages(kbuilder.getKnowledgePackages)
-  val ksession = kbase.newStatefulKnowledgeSession()
+  override val sessionName: String = "BuildingSession"
 
   Map()
+
 
   //Create Building with Rooms
   val building = {
@@ -30,7 +19,6 @@ object FireApp extends App {
       s => s -> Room(s)
     }.toMap
   }
-
   // Insert facts
   for ((name, room) <- building) {
     ksession.insert(room)
@@ -42,8 +30,8 @@ object FireApp extends App {
 
   // Start fires
   val kitchenFire = Fire( building.get( "kitchen" ).get )
-  val officeFire= Fire( building.get( "office" ).get )
 
+  val officeFire= Fire( building.get( "office" ).get )
   ksession.insert(kitchenFire)
   ksession.insert(officeFire)
 
@@ -54,5 +42,4 @@ object FireApp extends App {
 
   ksession.dispose()
   println("done")
-
 }

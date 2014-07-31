@@ -1,47 +1,24 @@
 package dsl
 
-import org.drools.builder.{ResourceType, KnowledgeBuilderFactory}
-import org.drools.io.ResourceFactory
-import org.drools.{FactHandle, KnowledgeBaseFactory}
+import simple.util.StatefulKieSessionSupport
 import scala.collection.JavaConversions._
 
 /**
  * todo  
  */
-object DSLApp extends App {
-  val kbuilder = KnowledgeBuilderFactory.newKnowledgeBuilder
-  kbuilder.add(ResourceFactory.newClassPathResource("dsl/sample.dsl"), ResourceType.DSL)
-  kbuilder.add(ResourceFactory.newClassPathResource("dsl/sample.dslr"), ResourceType.DSLR)
+object DSLApp extends App with StatefulKieSessionSupport {
 
+  override val sessionName: String = "DSLSession"
 
-  if (kbuilder.hasErrors) {
-    System.err.println(kbuilder.getErrors.toString)
-  }
+  val member = Member("Gold")
 
-  //Initialise new session
-  val kbase = KnowledgeBaseFactory.newKnowledgeBase
-  kbase.addKnowledgePackages(kbuilder.getKnowledgePackages)
-  val ksession = kbase.newStatefulKnowledgeSession()
+  val reservation = Reservation(classUpgrade = true)
 
-  val customer = new Customer("Gold")
-
-
-  val r = new Reservation(classUpgrade = true)
-
-
-  ksession.insert(customer)
-  ksession.insert(r)
+  ksession.insert(member)
+  ksession.insert(reservation)
   ksession.fireAllRules()
 
-  val handles = ksession.getFactHandles[FactHandle]()
-  handles.map(h => ksession.getObject(h)).foreach(println _)
-  
+  ksession.getObjects filter(c=>c.isInstanceOf[Miles]) foreach println
 
   ksession.dispose()
-
-
-
-
-
-
 }

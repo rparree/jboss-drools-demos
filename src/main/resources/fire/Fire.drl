@@ -44,16 +44,5 @@ then
   System.out.println("All is ok");
 end
 
-rule "Sprinkler puts fire out"
-timer (int: 10s 0)
-when
-  $fire : Fire($room : room)
-  $sprinkler : Sprinkler(room == $room, on==true)
-then
-  modify($sprinkler){setOn(false)};
-  retract($fire)
-  System.out.println("Fire gone: "+$room.getName());
-end
-
 
 

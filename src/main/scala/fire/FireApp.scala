@@ -29,13 +29,21 @@ object FireApp extends App with StatefulKieSessionSupport{
   val kitchenFire = Fire( building.get( "kitchen" ).get )
 
   val officeFire= Fire( building.get( "office" ).get )
-  ksession.insert(kitchenFire)
-  ksession.insert(officeFire)
+  
+  val kitchenFireHandle = ksession.insert(kitchenFire)
+  val officeFireHandler = ksession.insert(officeFire)
 
   ksession.fireAllRules()
+  
+  Thread.sleep(2000)
+
+  ksession.delete(kitchenFireHandle)
 
 
-  Thread.sleep(60000l)
+  ksession.delete(officeFireHandler)
+  println ("removed fires ")
+
+  ksession.fireAllRules()
 
   ksession.dispose()
   println("done")

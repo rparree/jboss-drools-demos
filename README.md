@@ -9,8 +9,7 @@ At this point running from sbt no longer works.
 
  1. **simple** Most basic Drools demo (stateless) 
  2. **dsl** Example showing the DSL support
- 3. **fire** Example from Drools documentation (note since upgrade to Drools 6, 
- the sprinklers won't turn of with the timed rule if have in place)
+ 3. **fire** Example from Drools documentation 
 
 
 ## Some Scala helpers

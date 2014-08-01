@@ -10,6 +10,9 @@ At this point running from sbt no longer works.
  1. **simple** Most basic Drools demo (stateless) 
  2. **dsl** Example showing the DSL support
  3. **fire** Example from Drools documentation 
+ 4. **reactive** Showing how modify together with @PropertyReactive prevents looping 
+ (demo is also used to show this does not work with update(...). You can
+  switch the enabled flag on the 'Butkus' rules to see this behaviour)  
 
 
 ## Some Scala helpers

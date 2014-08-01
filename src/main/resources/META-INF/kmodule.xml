@@ -10,4 +10,7 @@
     <kbase name="fire" packages="fire">
         <ksession name="BuildingSession"/>
     </kbase>
+    <kbase name="reactive" packages="reactive">
+        <ksession name="ReactiveSession"/>
+    </kbase>
 </kmodule>

@@ -1,0 +1,29 @@
+package reactive;
+import reactive.*;
+
+dialect  "mvel"
+
+rule "a pet named 'Butkus' must be a dog"
+   enabled true
+when
+    $p : Pet ( name == "Butkus")
+then
+    System.out.println("Setting to Dog");
+    modify($p){setKind(PetType.Dog)}; // note the Pet is @PropertyReactive  
+end
+
+rule "looking for a Dog" when
+  $p : Pet( kind == PetType.Dog)
+then 
+   System.out.println("woof woof");
+end
+
+rule "a pet named 'Butkus' must be a dog...a dog...a dog...a dog..."
+   enabled false
+when
+    $p : Pet ( name == "Butkus")
+then
+    System.out.println("Setting to endless dog");
+    $p.setKind(PetType.Dog());
+    update($p)
+end

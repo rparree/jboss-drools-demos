@@ -1,10 +1,9 @@
 # jboss-drools-demos
 
-At this point running from sbt no longer works. It did work, but having again some problems (different ones this time)
+The project contains both a maven pom and a sbt built file ([SBT 0.13](http://www.scala-sbt.org/release/docs/Getting-Started/Setup.html)). 
 
-This means they only run from an IDE such as IntelliJ
-
-You will need to install  [SBT 0.13](http://www.scala-sbt.org/release/docs/Getting-Started/Setup.html)
+At this point running from sbt no longer works.
+ It did work, but having again some problems (different ones this time)
 
 ## List of demos
 

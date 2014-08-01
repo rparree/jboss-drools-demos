@@ -9,9 +9,6 @@ object FireApp extends App with StatefulKieSessionSupport{
 
   override val sessionName: String = "BuildingSession"
 
-  Map()
-
-
   //Create Building with Rooms
   val building = {
     val roomNames = List("kitchen", "Bedroom", "office", "living room")

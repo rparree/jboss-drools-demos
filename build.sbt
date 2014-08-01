@@ -10,6 +10,8 @@ val droolsVersion = "6.0.1.Final"
 
 libraryDependencies += "com.sun.xml.bind" % "jaxb-xjc" % "2.2.4-1"
 
+libraryDependencies += "ch.qos.logback" % "logback-classic" % "1.1.2"
+
 libraryDependencies ++= {
   "org.kie" % "kie-api" % droolsVersion ::
     List("drools-compiler", "drools-core", "drools-jsr94", "drools-decisiontables", "knowledge-api")

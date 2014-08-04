@@ -1,0 +1,41 @@
+package agendas;
+dialect  "mvel"
+
+rule "agendas-A"
+agenda-group "A"
+auto-focus
+    when
+      Foo()
+    then
+      System.out.println("matched foo in groupA");
+      insert(new Bar())
+end
+
+rule "agendas-A-Bar"
+agenda-group "A"
+    when
+      Bar()
+    then
+      System.out.println("matched Bar in groupA");
+      drools.setFocus("B");
+      System.out.println("Set focus to B");
+end
+
+
+rule "agendas-B"
+agenda-group "B"
+    when
+      Foo()
+    then
+      System.out.println("matched foo in groupB");
+      insertLogical(new Tar())
+end
+
+rule "agendas-C"
+agenda-group "C"
+    when
+      Tar()
+    then
+      System.out.println("foo in groupC");
+end
+

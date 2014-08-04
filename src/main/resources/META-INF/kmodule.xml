@@ -13,4 +13,7 @@
     <kbase name="reactive" packages="reactive">
         <ksession name="ReactiveSession"/>
     </kbase>
+    <kbase name="agendas" packages="agendas">
+        <ksession name="AgendasSession"/>
+    </kbase>
 </kmodule>

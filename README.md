@@ -13,6 +13,7 @@ At this point running from sbt no longer works.
  4. **reactive** Showing how modify together with @PropertyReactive prevents looping 
  (demo is also used to show this does not work with update(...). You can
   switch the enabled flag on the 'Butkus' rules to see this behaviour)  
+ 5. **agendas** Shows the use for agenda groups and focus  
 
 
 ## Some Scala helpers

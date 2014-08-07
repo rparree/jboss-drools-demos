@@ -14,9 +14,9 @@ object DSLApp extends App with StatefulKieSessionSupport {
 
   val reservation = Reservation(classUpgrade = true)
 
-  ksession.insert(member)
-  ksession.insert(reservation)
-  ksession.fireAllRules()
+  ksession insert member
+  ksession insert reservation
+  ksession.fireAllRules
 
   ksession.getObjects filter(c=>c.isInstanceOf[Miles]) foreach println
 

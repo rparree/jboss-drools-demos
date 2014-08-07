@@ -8,11 +8,12 @@ import simple.util.StatefulKieSessionSupport
  */
 object AgendasApp extends App with StatefulKieSessionSupport{
   override val sessionName: String = "AgendasSession"
-  
-  ksession.insert(Foo())
+
+  val foo = Foo()
+  ksession insert foo
 
 
-  ksession.fireAllRules();
+  ksession.fireAllRules()
 }
 
 case class Foo()

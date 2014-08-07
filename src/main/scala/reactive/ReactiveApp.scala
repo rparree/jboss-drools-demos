@@ -7,7 +7,10 @@ import PetType._
  */
 object ReactiveApp  extends App with StatefulKieSessionSupport {
   override val sessionName: String = "ReactiveSession"
+
+  val butkus = Pet(name = "Butkus", kind = Unknown)
   
-  ksession.insert(Pet("Butkus",kind = Unknown))
+  ksession insert butkus 
+  
   ksession.fireAllRules()
 }

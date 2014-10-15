@@ -1,0 +1,13 @@
+package events;
+
+
+
+rule "When there is fire turn on Sprinkler"
+when
+  Fire() from entry-point "fire"
+  $sprinkler : Sprinkler(on==false)
+then
+  modify($sprinkler){setOn(true)};
+  System.out.println("Fire! turning on sprinkler ");
+end
+

@@ -1,9 +1,7 @@
 # jboss-drools-demos
 
-The project contains both a maven pom and a sbt built file ([SBT 0.13](http://www.scala-sbt.org/release/docs/Getting-Started/Setup.html)). 
-
 At this point running from sbt no longer works.
- It did work, but having again some problems (different ones this time)
+ It did work, but having again some problems (different ones this time). Therefore this project has a Maven pom file instead.
 
 ## List of demos
 
@@ -12,14 +10,14 @@ At this point running from sbt no longer works.
  3. **fire** Example from Drools documentation 
  4. **reactive** Showing how modify together with @PropertyReactive prevents looping 
  (demo is also used to show this does not work with update(...). You can
-  switch the enabled flag on the 'Butkus' rules to see this behaviour)  
- 5. **agendas** Shows the use for agenda groups and focus  
+  switch the enabled flag on the `Butkus` rules to see this behaviour)  
+ 5. **agendas** Shows the use of agenda groups and focus  
 
 
 ## Some Scala helpers
 
-In this project i am using two Scala traits 'StatelessKieSessionSupport' 
-and 'StatefulKieSessionSupport' to make it easier to write demos
+In this project i am using two Scala traits `StatelessKieSessionSupport`
+and `StatefulKieSessionSupport` to make it easier to write demos
 
 Example:
 

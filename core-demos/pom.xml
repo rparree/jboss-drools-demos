@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.edc4it</groupId>
+    <artifactId>drools-core-demos</artifactId>
+    
+    <packaging>kjar</packaging>
+    
+    <parent>
+       
+       <groupId>com.edc4it</groupId>
+       <artifactId>drools-demos-parent</artifactId>
+       <version>1.0-SNAPSHOT</version>
+       <relativePath>../pom.xml</relativePath>		
+    </parent>
+    
+    <properties>
+        <scalaVersion>2.11.3</scalaVersion>
+        <droolsVersion>6.1.0.Final</droolsVersion>
+    </properties>
+    
+    <dependencies>
+        <dependency>
+            <groupId>org.kie</groupId>
+            <artifactId>kie-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.drools</groupId>
+            <artifactId>drools-compiler</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>1.1.2</version>
+        </dependency>
+
+
+    </dependencies>
+    
+    <build>
+        <plugins>
+            
+           
+            <plugin>
+                <groupId>org.kie</groupId>
+                <artifactId>kie-maven-plugin</artifactId>
+                <version>${droolsVersion}</version>
+                 <extensions>true</extensions>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.scala-lang</groupId>
+                        <artifactId>scala-library</artifactId>
+                        <version>${scalaVersion}</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+        </plugins>
+    </build>
+    
+</project>

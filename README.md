@@ -5,6 +5,7 @@ At this point running from sbt no longer works.
 
 ## List of demos
 
+### drools-core-demos
  1. **simple** Most basic Drools demo (stateless) 
  2. **dsl** Example showing the DSL support
  3. **fire** Example from Drools documentation 
@@ -12,6 +13,16 @@ At this point running from sbt no longer works.
  (demo is also used to show this does not work with update(...). You can
   switch the enabled flag on the `Butkus` rules to see this behaviour)  
  5. **agendas** Shows the use of agenda groups and focus  
+
+To run these in an IDE: enable the `run-in-ide` profile
+
+### drools-client
+
+A demo showing use of maven for provisioning and automatic update
+
+### drools-cid
+
+Simple RESTfull application using CDI for KIE support.
 
 
 ## Some Scala helpers

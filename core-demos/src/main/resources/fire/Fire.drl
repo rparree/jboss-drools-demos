@@ -1,5 +1,6 @@
 import fire.*;
 
+
 rule "When there is fire turn on Sprinkler"
 when
   Fire($room : room)
@@ -23,18 +24,18 @@ rule "Raise alarm when there is a fire"
 when
   exists Fire()
 then
-   insert(new Alarm());
+   insertLogical(new Alarm());
    System.out.println("Raised the alarm");
 end
 
-rule "Cancel alarm when there is no fire"
-when
-  not Fire()
-  $alarm : Alarm()
-then
-   retract($alarm);
-   System.out.println("Cancelled the alarm");
-end
+//rule "Cancel alarm when there is no fire"
+//when
+//  not Fire()
+//  $alarm : Alarm()
+//then
+//   retract($alarm);
+//   System.out.println("Cancelled the alarm");
+//end
 
 rule "Status output when things are ok"
 when

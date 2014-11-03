@@ -36,6 +36,6 @@ agenda-group "C"
     when
       Tar()
     then
-      System.out.println("foo in groupC");
+      System.out.println("tar in groupC");
 end
 

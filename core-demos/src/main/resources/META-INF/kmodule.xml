@@ -16,7 +16,7 @@
     <kbase name="agendas" packages="agendas">
         <ksession name="AgendasSession"/>
     </kbase>
-    <kbase name="events" packages="events" eventProcessingMode="stream">
-        <ksession name="EventsSession"/>
-    </kbase>
+    <!--<kbase name="events" packages="events" eventProcessingMode="stream">-->
+        <!--<ksession name="EventsSession"/>-->
+    <!--</kbase>-->
 </kmodule>

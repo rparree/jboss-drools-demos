@@ -9,4 +9,5 @@ case class Applicant(@BeanProperty var name: String,
                       @BeanProperty var age: Integer,
                       @BeanProperty var pass: Boolean) {
 
+  def this() = this ("",0,false)
 }

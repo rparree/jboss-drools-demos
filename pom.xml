@@ -20,29 +20,29 @@
                 <version>${droolsVersion}</version>
                 <scope>import</scope>
             </dependency>
-	   
-
         </dependencies>
     </dependencyManagement>
     <dependencies>
-          <dependency>
+        <dependency>
             <groupId>org.scala-lang</groupId>
             <artifactId>scala-library</artifactId>
             <version>${scalaVersion}</version>
         </dependency>
-       
     </dependencies>
-    
+    <modules>
+        <module>core-demos</module>
+        <module>drools-client</module>
+        <module>drools-cdi</module>
+    </modules>
     <build>
         <plugins>
-	  
-	   <plugin>
+            <plugin>
                 <groupId>net.alchim31.maven</groupId>
                 <artifactId>scala-maven-plugin</artifactId>
                 <version>3.2.0</version>
                 <executions>
                     <execution>
-		      <phase>process-resources</phase>
+                        <phase>process-resources</phase>
                         <goals>
                             <goal>compile</goal>
                             <goal>testCompile</goal>
@@ -50,7 +50,6 @@
                     </execution>
                 </executions>
             </plugin>
-           
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.1</version>
@@ -63,7 +62,7 @@
                 <groupId>org.kie</groupId>
                 <artifactId>kie-maven-plugin</artifactId>
                 <version>${droolsVersion}</version>
-                 <extensions>true</extensions>
+                <extensions>true</extensions>
                 <dependencies>
                     <dependency>
                         <groupId>org.scala-lang</groupId>
@@ -74,5 +73,4 @@
             </plugin>
         </plugins>
     </build>
-    
 </project>

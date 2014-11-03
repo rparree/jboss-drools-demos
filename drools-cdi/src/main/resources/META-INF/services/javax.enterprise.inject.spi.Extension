@@ -1,0 +1,2 @@
+# see https://issues.jboss.org/browse/WFLY-1370
+org.drools.compiler.cdi.KieCDIExtension

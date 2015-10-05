@@ -1,5 +1,8 @@
-[condition][Member]there is a (member|passenger) with (a)? {value} loyalty level=Member(loyaltyLevel == "{value}")
+[keyword]donc=then
 
-[condition][Reservation](he|she) is requesting a class upgrade=Reservation(classUpgrade=="true")
+[when]there is a (member|passenger) with (a)? {value} loyalty level=Member(loyaltyLevel == "{value}")
+
+[when](he|she) is requesting a class upgrade=Reservation(classUpgrade=="true")
  
-[consequence][]the upgrade fee is {value} (miles)?=Miles miles = new Miles(new Double("{value}")); insertLogical(miles);
+[then]the upgrade fee is {value} (miles)?=Miles miles = new Miles(new Double("{value}")); insertLogical(miles);
+

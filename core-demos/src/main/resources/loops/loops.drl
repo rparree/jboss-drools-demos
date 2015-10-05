@@ -1,0 +1,20 @@
+package loops
+
+dialect "mvel"
+
+rule "A"
+lock-on-active
+when
+  Foo()
+then
+  System.out.println("Foo Match");
+  insert(new Bar())
+end
+
+rule "B"
+when
+  Bar()
+then
+  System.out.println("Bar Match");
+  insert(new Foo())
+end

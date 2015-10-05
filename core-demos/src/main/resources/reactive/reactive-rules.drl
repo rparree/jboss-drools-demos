@@ -9,7 +9,7 @@ when
     $p : Pet ( name == "Butkus")
 then
     System.out.println("Setting to Dog");
-    modify($p){kind = PetType.Dog}; // note the Pet is @PropertyReactive  
+    modify($p){kind = PetType.Dog}; // note the Pet is @PropertyReactive
 end
 
 rule "looking for a Dog" when

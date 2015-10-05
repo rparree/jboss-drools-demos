@@ -12,7 +12,7 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
     <properties>
-        <scalaVersion>2.11.3</scalaVersion>
+        <scalaVersion>2.11.7</scalaVersion>
         <droolsVersion>6.1.0.Final</droolsVersion>
         <drools-scope>provided</drools-scope>
     </properties>

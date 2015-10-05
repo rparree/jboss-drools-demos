@@ -4,15 +4,13 @@ package dsl
 import java.math.BigDecimal
 import dsl.*
 
-expander JBTravelDSL.dsl
-
 rule "Gold class rule"
     when there is a member with a Gold loyalty level and he is requesting a class upgrade
-    then the upgrade fee is 44000 miles
+    donc the upgrade fee is 44000 miles
 end
 
 rule "Silver  class (mixed) rule"
     when there is a member with a Silver loyalty level and he is requesting a class upgrade
-    then 
+    then
     > Miles miles = new Miles(new Double("99000")); insertLogical(miles);
 end

@@ -7,7 +7,7 @@ import scala.beans.BeanProperty
 /**
  * todo
  */
-@PropertyReactive 
+@PropertyReactive
 case class Pet(@BeanProperty var name: String, 
                @BeanProperty var kind   : PetType.Value ) {
 

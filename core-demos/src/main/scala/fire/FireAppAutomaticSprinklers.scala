@@ -1,15 +1,14 @@
 package fire
 
 import simple.util.StatefulKieSessionSupport
-import scala.concurrent._
+
 /**
  * todo  
  */
-object FireApp2 extends App with StatefulKieSessionSupport{
+object FireAppAutomaticSprinklers extends App with StatefulKieSessionSupport{
 
   override val sessionName: String = "BuildingSession"
 
-  System.out.println("fire until halt")
   //Create Building with Rooms
   val building = {
     val roomNames = List("kitchen", "Bedroom", "office", "living room")
@@ -22,29 +21,19 @@ object FireApp2 extends App with StatefulKieSessionSupport{
     ksession.insert(room)
     ksession.insert(Sprinkler(room))
   }
-  import ExecutionContext.Implicits.global
+
   // Print status of building
-  Future {
-    ksession.fireUntilHalt()
-  }
+  ksession.fireAllRules()
+
   // Start fires
   val kitchenFire = Fire( building.get( "kitchen" ).get )
   val officeFire= Fire( building.get( "office" ).get )
   
   val kitchenFireHandle = ksession insert kitchenFire 
-  val officeFireHandler = ksession insert officeFire 
+  val officeFireHandler = ksession insert officeFire
 
-  
-  Thread.sleep(2000)
+  ksession.fireUntilHalt()
 
-  ksession delete kitchenFireHandle 
-  ksession delete officeFireHandler 
-  
-  println ("removed fires ")
 
-  Thread.sleep(2000)
 
-  ksession.dispose()
-  
-  println("done")
 }

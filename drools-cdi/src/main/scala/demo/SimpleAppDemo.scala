@@ -22,7 +22,7 @@ class SimpleAppDemo {
   @POST
   @Produces(Array("text/plain"))
   @Consumes(Array(MediaType.APPLICATION_JSON))
-  def get(a : Applicant) : String = {
+  def check(a : Applicant) : String = {
 
     session.execute(a)
     a.pass.toString

@@ -6,14 +6,15 @@ when
   Fire($room : room)
   $sprinkler : Sprinkler(room == $room, on==false)
 then
-  modify($sprinkler){setOn(true)};
+  modify($sprinkler){
+    setOn(true)
+  };
   System.out.println("Turned on sprinkler in room: "+$room.getName());
 end
 
-rule "When fire is gone turn off the sprinkler"
+rule "When fire has been extinguished turn off the sprinkler"
 when
-  $room : Room()
-  $sprinkler : Sprinkler(room == $room, on==true)
+  $sprinkler : Sprinkler($room: room, on==true)
   not Fire (room == $room)
 then
   modify($sprinkler){setOn(false)};
@@ -28,11 +29,11 @@ then
    System.out.println("Raised the alarm");
 end
 
-rule "turn off fire"
+rule "extinguishe fire after sprinker has been on for 5sec"
   timer (int:5s)
 when
-    $f : Fire($room : room)
-    $sprinkler : Sprinkler(room == $room, on==true)
+    $sprinkler : Sprinkler($room : room , on==true)
+    $f : Fire(room == $room)
 then
   System.out.println("Sprinker did its work");
   retract($f)
@@ -47,13 +48,4 @@ then
 end
 
 
-/* No need :)
-rule "Cancel alarm when there is no fire"
-when
-  not Fire()
-  $alarm : Alarm()
-then
-   retract($alarm);
-   System.out.println("Cancelled the alarm");
-end
-*/
+

@@ -2,11 +2,17 @@ package simple;
 
 import simple.model.Applicant;
 
+dialect "mvel"
 
-
-rule "Is of valid age"
+rule "allowed to pass"
 when
-    $a : Applicant( age > 18 )
+  $a : Applicant( age >= 16,  pass == false )
 then
-    retract($a)
+  modify($a){
+     pass = true
+  }
+  System.out.println("set pass to true");
 end
+
+
+

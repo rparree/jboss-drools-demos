@@ -10,8 +10,12 @@ object SimpleApp extends App with StatelessKieSessionSupport {
 
   override val sessionName = "SimpleSession"
 
-  val applicant = Applicant(name = "jennifer", age = 28, pass = false)
-  ksession.execute(applicant)
+  val jenny= Applicant(name = "jennifer", age = 58, pass = false)
 
-  System.out.println(applicant.getPass)
+
+  println (s"value before: ${jenny.getPass}")
+
+  ksession.execute(jenny)
+
+  println (s"value after: ${jenny.getPass}")
 }

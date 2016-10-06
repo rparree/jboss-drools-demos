@@ -1,0 +1,15 @@
+package for_all;
+
+import for_all.Bus
+
+
+
+
+
+rule "busses"
+when
+  forall(  Bus(colour == "red") )
+then
+     System.out.println("OK" ) ;
+end
+

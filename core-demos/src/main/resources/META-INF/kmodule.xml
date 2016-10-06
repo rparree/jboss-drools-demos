@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <kmodule
-        xmlns="http://jboss.org/kie/6.0.0/kmodule" >
-    <kbase name="simple" packages="simple" >
+        xmlns="http://jboss.org/kie/6.0.0/kmodule">
+    <kbase name="simple" packages="simple">
         <ksession name="SimpleSession" type="stateless"/>
     </kbase>
     <kbase name="dsl" packages="dsl">
-        <ksession name="DSLSession" />
+        <ksession name="DSLSession"/>
     </kbase>
     <kbase name="fire" packages="fire">
-        <ksession name="BuildingSession" />
+        <ksession name="BuildingSession"/>
     </kbase>
     <kbase name="reactive" packages="reactive">
         <ksession name="ReactiveSession"/>
@@ -19,7 +19,10 @@
     <kbase name="loops" packages="loops">
         <ksession name="LoopsSession"/>
     </kbase>
+    <kbase name="other" packages="other">
+        <ksession name="otherSession"/>
+    </kbase>
     <!--<kbase name="events" packages="events" eventProcessingMode="stream">-->
-        <!--<ksession name="EventsSession"/>-->
+    <!--<ksession name="EventsSession"/>-->
     <!--</kbase>-->
 </kmodule>

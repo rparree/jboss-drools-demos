@@ -1,31 +1,33 @@
 import fire.*;
 
-
-rule "When there is fire turn on Sprinkler"
+dialect "mvel"
+rule "When there is a fire turn on Sprinkler"
 when
   Fire($room : room)
   $sprinkler : Sprinkler(room == $room, on==false)
 then
   modify($sprinkler){
-    setOn(true)
-  };
-  System.out.println("Turned on sprinkler in room: "+$room.getName());
+    on = true
+  }
+  System.out.println("Turned on sprinkler in: "+$room)
 end
 
-rule "When fire has been extinguished turn off the sprinkler"
+rule "When there is no fire turn off the sprinkler"
 when
   $sprinkler : Sprinkler($room: room, on==true)
   not Fire (room == $room)
 then
-  modify($sprinkler){setOn(false)};
-  System.out.println("Turned off sprinkler in room: "+$room.getName());
+  modify($sprinkler){
+    on = false
+  }
+  System.out.println("Turned off sprinkler in " + $room)
  end
 
 rule "Raise alarm when there is a fire"
 when
   exists Fire()
 then
-   insertLogical(new Alarm());
+   insertLogical(new AlarmSound());
    System.out.println("Raised the alarm");
 end
 
@@ -35,16 +37,17 @@ when
     $sprinkler : Sprinkler($room : room , on==true)
     $f : Fire(room == $room)
 then
-  System.out.println("Sprinker did its work");
   retract($f)
+  System.out.println("Sprinkler did its work in the " + $room)
 end
 
 rule "Status output when things are ok"
 when
- not Alarm()
+ not AlarmSound()
  not Sprinkler(on == true)
+ not Fire()
 then
-  System.out.println("All is ok");
+  System.out.println("All is ok")
 end
 
 

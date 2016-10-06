@@ -31,18 +31,14 @@ object FireAppFireUntilHalt extends App with StatefulKieSessionSupport{
   val kitchenFire = Fire( building.get( "kitchen" ).get )
   val officeFire= Fire( building.get( "office" ).get )
   
-  val kitchenFireHandle = ksession insert kitchenFire 
+  val kitchenFireHandle = ksession insert kitchenFire
   val officeFireHandler = ksession insert officeFire 
 
   
-  Thread.sleep(2000)
+  Thread.sleep(30000)
 
-  ksession delete kitchenFireHandle 
-  ksession delete officeFireHandler 
-  
-  println ("removed fires ")
 
-  Thread.sleep(2000)
+
 
   ksession.dispose()
   

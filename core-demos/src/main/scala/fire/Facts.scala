@@ -14,4 +14,4 @@ case class Sprinkler(@BeanProperty var room: Room,
 
 case class Fire (@BeanProperty var room: Room)
 
-class Alarm
+class AlarmSound

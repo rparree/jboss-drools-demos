@@ -22,6 +22,9 @@
     <kbase name="other" packages="other">
         <ksession name="otherSession"/>
     </kbase>
+    <kbase name="auditbase" packages="auditdemo">
+        <ksession name="auditSession"/>
+    </kbase>
     <!--<kbase name="events" packages="events" eventProcessingMode="stream">-->
     <!--<ksession name="EventsSession"/>-->
     <!--</kbase>-->

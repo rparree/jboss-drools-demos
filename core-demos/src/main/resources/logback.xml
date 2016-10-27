@@ -2,7 +2,13 @@
 
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
-            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level \(%file:%L\) - %msg%n</pattern>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %cyan(%logger{0}) - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="AUDIT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %cyan(%logger{0}) - %yellow(%msg%n)</pattern>
         </encoder>
     </appender>
 
@@ -10,5 +16,8 @@
          <appender-ref ref="STDOUT" />
      </root>
 
-    <logger name="org.drools" level="debug"/>
+    <logger name="org.drools" level="info"/>
+    <logger name="org.drools.core.audit" level="debug" additivity="false">
+        <appender-ref ref="AUDIT"  />
+    </logger>
  </configuration>

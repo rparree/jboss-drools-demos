@@ -1,0 +1,57 @@
+package  auditdemo;
+global org.slf4j.Logger logger
+
+dialect "mvel"
+
+declare Customer
+    name : String
+    age : int
+end
+
+declare Foo
+end
+
+declare Adult
+    name : String @key
+    customer : Customer @key
+end
+
+rule R0
+when
+  Foo()
+then
+  logger.info("found a foo");
+end
+
+rule R1
+when
+  $c : Customer()
+then
+  logger.info("found a customer");
+end
+
+
+rule R2
+when
+  $c : Customer(age > 21)
+then
+  insertLogical(new Adult($c.name, $c))
+  logger.info("inferred an adult");
+end
+
+
+rule R3
+when
+  Adult()
+then
+    logger.info("found an adult");
+end
+
+rule R4
+when
+   $a : Adult(name=="john")
+then
+  logger.info("found a lying adult");
+  $a.customer.age = 18;
+  update($a.customer)
+end

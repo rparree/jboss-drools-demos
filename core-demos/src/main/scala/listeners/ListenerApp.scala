@@ -18,7 +18,9 @@ object ListenerApp extends App with StatefulKieSessionSupport with LazyLogging {
   override val sessionName: String = "auditSession"
 
 
-  ksession.addEventListener(new MyLogger)
+  ksession.addEventListener(new MyAgendaListener)
+
+  ksession.addEventListener(new MyRuleRuntimeEventListener)
 
   val kbase = container.getKieBase("auditbase")
   val customerType = kbase.getFactType("auditdemo", "Customer" )
@@ -39,7 +41,7 @@ object ListenerApp extends App with StatefulKieSessionSupport with LazyLogging {
 }
 
 
-class MyLogger extends DefaultAgendaEventListener  with LazyLogging {
+class MyAgendaListener extends DefaultAgendaEventListener  with LazyLogging {
 
   override def matchCreated(event: MatchCreatedEvent) = logger.info(s"placed [${event.getMatch.getRule.getName}] on agenda ")
 
@@ -51,3 +53,23 @@ class MyLogger extends DefaultAgendaEventListener  with LazyLogging {
 
 
 }
+
+class MyRuleRuntimeEventListener extends DefaultRuleRuntimeEventListener with LazyLogging {
+  override def objectUpdated(e: ObjectUpdatedEvent): Unit = {
+    logger.info(s"${e.getObject} updated by ${e.getRule.getName}")
+
+  }
+
+  override def objectInserted(e : ObjectInsertedEvent): Unit = {
+    val o = Option(e.getRule)
+    val s = o.map(r=>r.getName).getOrElse("KIE API")
+    logger.info(s"${e.getObject} inserted by ${s}")
+  }
+
+  override def objectDeleted(e: ObjectDeletedEvent): Unit = {
+    val o = Option(e.getRule)
+    val s = o.map(r=>r.getName).getOrElse("KIE API")
+    logger.info(s"${e.getOldObject} retracted due to ${s}")
+  }
+}
+

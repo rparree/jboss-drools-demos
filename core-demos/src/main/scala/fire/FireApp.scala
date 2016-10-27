@@ -1,5 +1,6 @@
 package fire
 
+import org.drools.core.ClassObjectFilter
 import simple.util.StatefulKieSessionSupport
 
 /**
@@ -34,11 +35,10 @@ object FireApp extends App with StatefulKieSessionSupport{
 
   ksession.fireAllRules()
   
-  Thread.sleep(3000)
+  Thread.sleep(6000)
 
  /* ksession delete kitchenFireHandle
   ksession delete officeFireHandler */
-  
   println ("removed fires ")
 
   ksession.fireAllRules

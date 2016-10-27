@@ -1,6 +1,9 @@
 package fire
 
+import org.drools.core.{ClassObjectFilter, ObjectFilter}
+import org.kie.api.event.rule._
 import simple.util.StatefulKieSessionSupport
+
 import scala.concurrent._
 /**
  * todo  

@@ -4,7 +4,7 @@ import simple.model.Applicant;
 
 dialect "mvel"
 
-rule "allowed to pass"
+rule "allow applicant of at least of 16 yrs old"
 when
   $a : Applicant( age >= 16,  pass == false )
 then
@@ -13,6 +13,3 @@ then
   }
   System.out.println("set pass to true");
 end
-
-
-

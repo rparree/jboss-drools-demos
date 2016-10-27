@@ -1,6 +1,14 @@
 package agendas;
 dialect  "mvel"
 
+
+rule "agendas-main"
+    when
+      Foo()
+    then
+      System.out.println("matched foo in default");
+end
+
 rule "agendas-A"
 agenda-group "A"
 auto-focus
@@ -10,6 +18,8 @@ auto-focus
       System.out.println("matched foo in groupA");
       insert(new Bar())
 end
+
+
 
 rule "agendas-A-Bar"
 agenda-group "A"
@@ -21,6 +31,13 @@ agenda-group "A"
       System.out.println("Set focus to B");
 end
 
+rule "agendas-A-Tar"
+agenda-group "A"
+    when
+      Tar()
+    then
+      System.out.println("matched Tar in groupA");
+end
 
 rule "agendas-B"
 agenda-group "B"

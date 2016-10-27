@@ -13,7 +13,7 @@ object SimpleClientApp extends App {
 
     private val services = KieServices.Factory.get
     private val releaseId = services.newReleaseId("com.edc4it",
-      "drools-core-demos", "[1.0,2)")
+      "drools-core-demos", "[1.0,2.0)")
     private val kieContainer = services.newKieContainer(releaseId)
 
     val kScanner = services.newKieScanner(kieContainer)
@@ -26,6 +26,7 @@ object SimpleClientApp extends App {
       val (aName, aAge) = scala.io.StdIn.readf2("{0} {1,number}")
       val applicant = Applicant(name = aName.asInstanceOf[String], age = aAge.asInstanceOf[Long].toInt, pass = false)
       kieSession.execute(applicant)
+
       println(s"valid is ${applicant.pass}")
       check()
     }

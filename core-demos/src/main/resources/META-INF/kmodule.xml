@@ -19,8 +19,8 @@
     <kbase name="loops" packages="loops">
         <ksession name="LoopsSession"/>
     </kbase>
-    <kbase name="other" packages="other">
-        <ksession name="otherSession"/>
+    <kbase name="other" packages="for_all">
+        <ksession name="for_all"/>
     </kbase>
     <kbase name="auditbase" packages="auditdemo">
         <ksession name="auditSession"/>

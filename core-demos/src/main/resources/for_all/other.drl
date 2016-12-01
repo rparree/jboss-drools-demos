@@ -8,7 +8,10 @@ import for_all.Bus
 
 rule "busses"
 when
-  forall(  Bus(colour == "red") )
+  forall(
+    $b : Bus(colour == "red")
+    Bus ($b == this, _type=="uk")
+   )
 then
      System.out.println("OK" ) ;
 end

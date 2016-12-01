@@ -1,5 +1,7 @@
 package for_all
 
+import java.util
+
 import simple.util.{StatefulKieSessionSupport, StatelessKieSessionSupport}
 
 import scala.concurrent.{ExecutionContext, Future}
@@ -8,11 +10,11 @@ import scala.concurrent.{ExecutionContext, Future}
   * todo
   */
 
-case class Bus(colour : String)
+case class Bus(colour : String, _type : String)
 
 object ForAllApp extends App with StatefulKieSessionSupport {
 
-  override val sessionName = "otherSession"
+  override val sessionName = "for_all"
 
 
   import ExecutionContext.Implicits.global
@@ -21,11 +23,12 @@ object ForAllApp extends App with StatefulKieSessionSupport {
   }
  */
 
-  ksession.insert(Bus("red"),Bus("red"),Bus("red"))
-  ksession.fireAllRules()
-  ksession.insert(Bus("red"))
-  ksession.fireAllRules()
-  ksession.insert(Bus("blue"))
+
+  ksession.insert(
+    Bus("red", "uk"),
+    Bus("red", "uk"),
+    Bus("red", "uk"),
+    Bus("blue", "fr"))
   ksession.fireAllRules()
   Thread.sleep(1000000)
 

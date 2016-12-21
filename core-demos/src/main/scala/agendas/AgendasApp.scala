@@ -12,7 +12,6 @@ object AgendasApp extends App with StatefulKieSessionSupport{
   val foo = Foo()
   ksession insert foo
 
-
   ksession.fireAllRules()
 }
 

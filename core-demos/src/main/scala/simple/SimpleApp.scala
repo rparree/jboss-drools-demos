@@ -13,9 +13,9 @@ object SimpleApp extends App with StatelessKieSessionSupport {
   val jenny= Applicant(name = "jennifer", age = 58, pass = false)
 
 
-  println (s"value before: ${jenny.getPass}")
+  println (s"value before: ${jenny.pass}")
 
   ksession.execute(jenny)
 
-  println (s"value after: ${jenny.getPass}")
+  println (s"value after: ${jenny.pass}")
 }

@@ -1,10 +1,12 @@
 package fire
 
+import fire.FireApp.ksession
 import org.drools.core.{ClassObjectFilter, ObjectFilter}
 import org.kie.api.event.rule._
 import simple.util.StatefulKieSessionSupport
 
 import scala.concurrent._
+import ExecutionContext.Implicits.global
 /**
  * todo  
  */
@@ -14,34 +16,20 @@ object FireAppFireUntilHalt extends App with StatefulKieSessionSupport{
 
   System.out.println("fire until halt")
   //Create Building with Rooms
-  val building = {
-    val roomNames = List("kitchen", "Bedroom", "office", "living room")
-    roomNames.map {
-      s => s -> Room(s)
-    }.toMap
-  }
-  // Insert facts
-  for ((name, room) <- building) {
-    ksession.insert(room)
-    ksession.insert(Sprinkler(room))
-  }
-  import ExecutionContext.Implicits.global
-  // Print status of building
+  val rooms = Room("kitchen") :: Room("Bedroom") :: Room("office") :: Room("living room") :: Nil
+
+  val SprinkerOff = Sprinkler(_: Room)
+  rooms map SprinkerOff foreach ksession.insert
+  rooms foreach ksession.insert
+
   Future {
     ksession.fireUntilHalt()
   }
   // Start fires
-  val kitchenFire = Fire( building.get( "kitchen" ).get )
-  val officeFire= Fire( building.get( "office" ).get )
-  
-  val kitchenFireHandle = ksession insert kitchenFire
-  val officeFireHandler = ksession insert officeFire 
+  ksession.insert(Fire(rooms(2)))
+  ksession.insert(Fire(rooms(3)))
 
-  
   Thread.sleep(30000)
-
-
-
 
   ksession.dispose()
   

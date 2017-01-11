@@ -11,39 +11,30 @@ object FireApp extends App with StatefulKieSessionSupport{
   override val sessionName: String = "BuildingSession"
 
   //Create Building with Rooms
-  val building = {
-    val roomNames = List("kitchen", "Bedroom", "office", "living room")
-    roomNames.map {
-      s => s -> Room(s)
-    }.toMap
-  }
-  // Insert facts
-  for ((name, room) <- building) {
-    ksession.insert(room)
-    ksession.insert(Sprinkler(room))
-  }
+  val rooms = Room("kitchen") :: Room("Bedroom") :: Room("office") :: Room("living room") :: Nil
+
+  val SprinkerOff = Sprinkler(_: Room)
+  rooms map SprinkerOff foreach ksession.insert
+  rooms foreach ksession.insert
 
   // Print status of building
   ksession.fireAllRules()
 
   // Start fires
-  val kitchenFire = Fire( building.get( "kitchen" ).get )
-  val officeFire= Fire( building.get( "office" ).get )
-  
-  val kitchenFireHandle = ksession insert kitchenFire 
-  val officeFireHandler = ksession insert officeFire 
+  val fireHandler1 = ksession.insert(Fire(rooms(2)))
+  val fireHandler2 = ksession.insert(Fire(rooms(3)))
 
   ksession.fireAllRules()
   
   Thread.sleep(6000)
 
- /* ksession delete kitchenFireHandle
-  ksession delete officeFireHandler */
+  /* ksession delete fireHandler1
+   ksession delete fireHandler2 */
   println ("removed fires ")
 
-  ksession.fireAllRules
+  ksession.fireAllRules()
 
-  ksession.dispose
+  ksession.dispose()
   
   println("done")
 }
